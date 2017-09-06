@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import gql from 'graphql-tag';
 
 class SongCreate extends Component {
 
@@ -8,11 +9,17 @@ class SongCreate extends Component {
     this.state = { title: ''};
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+
+
+  }
+
   render() {
     return (
       <div>
         <h3>Create a new song, hommie!</h3>
-        <form>
+        <form onSubmit={this.onSubmit.bind(this)} >
           <label>Song Title</label>
           <input
           onChange = { event => this.setState({title:event.target.value})}
@@ -24,5 +31,10 @@ class SongCreate extends Component {
   }
 }
 
+const mutation = gql`
+  mutation {
+    add(title: )
+  }
+`;
 
 export default SongCreate;
