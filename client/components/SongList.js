@@ -6,11 +6,22 @@ import query from '../queries/fetchSongs';
 
 class SongList extends Component {
 
+  onSongDelete(id) {
+    this.props.mutate({
+      variables: {id:id}
+    });
+
+  }
+
   renderSongs() {
-    return this.props.data.songs.map(song => {
+    return this.props.data.songs.map( song => {
       return(
         <li key={song.id} className="collection-item">
           Title is: {song.title}
+          <i
+          className="material-icons"
+          onClick={ () => this.onSongDelete(song.id) } >
+          delete</i>
         </li>
       );
     });
