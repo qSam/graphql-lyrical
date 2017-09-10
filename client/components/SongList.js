@@ -15,7 +15,7 @@ class SongList extends Component {
     return this.props.data.songs.map( song => {
       return(
         <li key={song.id} className="collection-item">
-          Title is: {song.title}
+          <Link to={`/songs.${id}`} >Title is: {song.title}</Link>
           <i
           className="material-icons"
           onClick={ () => this.onSongDelete(song.id) } >
