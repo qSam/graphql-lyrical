@@ -15,7 +15,9 @@ class SongList extends Component {
     return this.props.data.songs.map( song => {
       return(
         <li key={song.id} className="collection-item">
-          <Link to={`/songs.${id}`} >Title is: {song.title}</Link>
+
+            Title is {song.title}
+
           <i
           className="material-icons"
           onClick={ () => this.onSongDelete(song.id) } >
@@ -27,6 +29,7 @@ class SongList extends Component {
 
   render() {
 
+    console.log("I am here");
     if(this.props.data.loading) {
       return <div>Loading...</div>;
     }

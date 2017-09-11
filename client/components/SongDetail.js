@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { grapgql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 import fetchSong from '../queries/fetchSong';
 
