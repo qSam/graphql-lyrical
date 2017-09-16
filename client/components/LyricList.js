@@ -4,9 +4,17 @@ import gql from 'graphql-tag';
 
 class LyricList extends Component {
 
-   onLike(id) {
+   onLike(id, likes) {
      this.props.mutate({
-       variables: { id: id }
+       variables: { id: id },
+       optimisticResponse: {
+         _typename: 'Mutation',
+         likeLyric: {
+           id: id,
+           _typename: 'LyricType',
+           likes: likes + 1
+         }
+       }
      });
    }
 
@@ -17,7 +25,7 @@ class LyricList extends Component {
                   {content}
                   <div className="vote-box">
                   <i
-                  onClick = { () => this.onLike(id) }
+                  onClick = { () => this.onLike(id, likes) }
                   className="material-icons">thumb_up</i>
                   {likes}
                   </div>
